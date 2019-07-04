@@ -22,9 +22,14 @@ namespace capstonedg.Controllers
     [HttpGet("{placeType}")]
     public ActionResult<List<Bars>> getBars(string placeType)
     {
-      var bars = db.Bar.Where(x => x.Type == placeType);
-
+      var bars = db.Bar
+      .Where(x => x.Type == placeType).ToList()
+      .OrderBy(x => Guid.NewGuid()).Take(1);
       return bars.ToList();
+
+      // var randomBar = bars.ToList().Skip(2)
+      // .Take(1);
+      // return randomBar.ToList();
     }
 
     [HttpPost]
@@ -34,6 +39,14 @@ namespace capstonedg.Controllers
       db.SaveChanges();
       return Ok();
     }
+
+    // [HttpPost]
+    // public ActionResult<List<Restaurants>> postRestaurant(Restaurants Restaurant)
+    // {
+    //   var restaurants = db.Restaurant.Add(bar);
+    //   db.SaveChanges();
+    //   return Ok();
+    // }
 
 
 

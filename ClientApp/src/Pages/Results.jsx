@@ -15,11 +15,11 @@ export default function Results() {
   return (
     <section>
       <div className="bar-selection">
-        <ul>
+        <ul className="Bars">
           {bars.map(index => {
             return (
               <li key={index}>
-                <h2>{index.Name}</h2>
+                <h4>{index.name}</h4>
               </li>
             )
           })}
