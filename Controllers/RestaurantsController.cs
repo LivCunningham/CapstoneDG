@@ -9,36 +9,30 @@ namespace capstonedg.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class BarsController : ControllerBase
+  public class RestaurantsController : ControllerBase
   {
     private DatabaseContext db;
-    public BarsController()
+    public RestaurantsController()
     {
       this.db = new DatabaseContext();
     }
-    //Beginning section by getting list of all bars
-    //next add filtering logic to select one random bar
+
 
     [HttpGet("{placeType}")]
-    public ActionResult<List<Bars>> getBars(string placeType)
+    public ActionResult<List<Restaurants>> getRestaurants(string placeType)
     {
-      var bars = db.Bar
+      var restaurants = db.Restaurant
       .Where(x => x.Type == placeType).ToList()
       .OrderBy(x => Guid.NewGuid()).Take(1);
-      return bars.ToList();
-
-      // var randomBar = bars.ToList().Skip(2)
-      // .Take(1);
-      // return randomBar.ToList();
+      return restaurants.ToList();
     }
 
     [HttpPost]
-    public ActionResult<List<Bars>> postBars(Bars bar)
+    public ActionResult<List<Restaurants>> postRestaurants(Restaurants restaurant)
     {
-      var bars = db.Bar.Add(bar);
+      var restaurants = db.Restaurant.Add(restaurant);
       db.SaveChanges();
       return Ok();
     }
-
   }
 }

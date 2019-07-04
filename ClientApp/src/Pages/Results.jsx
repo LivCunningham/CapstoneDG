@@ -3,6 +3,8 @@ import axios from 'axios'
 
 export default function Results() {
   const [bars, setBars] = useState([])
+  const [restaurants, setRestaurants] = useState([])
+  const [entertainment, setEntertainment] = useState([])
 
   //Bars
   useEffect(() => {
@@ -10,6 +12,26 @@ export default function Results() {
       console.log({ resp })
       setBars(resp.data)
     })
+  }, [])
+
+  //Restaurants
+  useEffect(() => {
+    axios
+      .get(`https://localhost:5001/api/Restaurants/restaurant`)
+      .then(resp => {
+        console.log({ resp })
+        setRestaurants(resp.data)
+      })
+  }, [])
+
+  //Entertainment
+  useEffect(() => {
+    axios
+      .get(`https://localhost:5001/api/Entertainment/entertainment`)
+      .then(resp => {
+        console.log({ resp })
+        setEntertainment(resp.data)
+      })
   }, [])
 
   return (
@@ -20,6 +42,49 @@ export default function Results() {
             return (
               <li key={index}>
                 <h4>{index.name}</h4>
+                <h4>{index.location}</h4>
+                <div class="container">
+                  <img className="image" src={index.photo} />
+                  <div class="middle">
+                    <div class="text">See More Photos</div>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <div className="restaurant-selection">
+        <ul className="restaurants">
+          {restaurants.map(index => {
+            return (
+              <li key={index}>
+                <h4>{index.name}</h4>
+                <h4>{index.location}</h4>
+                <div class="container">
+                  <img className="image" src={index.photo} />
+                  <div class="middle">
+                    <div class="text">See More Photos</div>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <div className="entertainment-selection">
+        <ul className="entertainment">
+          {entertainment.map(index => {
+            return (
+              <li key={index}>
+                <h4>{index.name}</h4>
+                <h4>{index.location}</h4>
+                <div class="container">
+                  <img className="image" src={index.photo} />
+                  <div class="middle">
+                    <div class="text">See More Photos</div>
+                  </div>
+                </div>
               </li>
             )
           })}
