@@ -44,7 +44,7 @@ export default function Results() {
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
                 <div class="container">
-                  <img className="image" src={index.photo} />
+                  <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
                     <div class="text">See More Photos</div>
                   </div>
@@ -62,7 +62,7 @@ export default function Results() {
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
                 <div class="container">
-                  <img className="image" src={index.photo} />
+                  <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
                     <div class="text">See More Photos</div>
                   </div>
@@ -80,7 +80,7 @@ export default function Results() {
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
                 <div class="container">
-                  <img className="image" src={index.photo} />
+                  <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
                     <div class="text">See More Photos</div>
                   </div>

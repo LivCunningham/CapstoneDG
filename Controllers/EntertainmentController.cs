@@ -33,6 +33,20 @@ namespace capstonedg.Controllers
       db.SaveChanges();
       return Ok();
     }
+
+    // PUT
+    [HttpPut("{id}")]
+    public ActionResult<List<Entertainment>> putEntertainment(int id, Entertainment Fun)
+    {
+      var fixIt = db.Fun.FirstOrDefault(f => f.Id == id);
+      fixIt.Photo = Fun.Photo;
+      fixIt.Name = Fun.Name;
+      fixIt.Location = Fun.Location;
+      db.SaveChanges();
+      return Ok();
+    }
+
+
   }
 }
 

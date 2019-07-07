@@ -40,5 +40,16 @@ namespace capstonedg.Controllers
       return Ok();
     }
 
+    // PUT
+    [HttpPut("{id}")]
+    public ActionResult<List<Bars>> putBars(int id, Bars bar)
+    {
+      var fixIt = db.Bar.FirstOrDefault(f => f.Id == id);
+      fixIt.Photo = bar.Photo;
+      fixIt.Name = bar.Name;
+      fixIt.Location = bar.Location;
+      db.SaveChanges();
+      return Ok();
+    }
   }
 }
