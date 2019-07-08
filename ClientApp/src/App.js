@@ -8,6 +8,7 @@ import Registration from './Pages/Registration.jsx'
 import Results from './Pages/Results.jsx'
 import TheOne from './Pages/TheOne.jsx'
 import Adventures from './Pages/Adventures.jsx'
+import Admin from './Pages/Admin.jsx'
 
 export default class App extends Component {
   static displayName = App.name
@@ -17,6 +18,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path="/" component={Home} />
         <Route exact path="/Login" component={Login} />
+        <Route exact path="/Admin" component={Admin} />
         <Route component={Registration} />
         <Route exact path="/NewDate" component={NewDate} />
         <Route exact path="/Results" component={Results} />
