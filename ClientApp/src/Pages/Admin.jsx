@@ -17,5 +17,12 @@ export default function Admin() {
       })
   }
 
-  return <div />
+  return (
+    <>
+      <form onSubmit={getLocation}>
+        <input type="text" placeholder="Add-A-Place-Bitch" />
+        <button>+</button>
+      </form>
+    </>
+  )
 }
