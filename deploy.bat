@@ -1,6 +1,6 @@
 dotnet publish -c Release 
 
-cp dockerfile ./bin/release/netcoreapp2.2/publish
+Copy-Item dockerfile ./bin/release/netcoreapp2.2/publish
 
 docker build -t date-genie-image ./bin/release/netcoreapp2.2/publish
 
