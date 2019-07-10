@@ -148,10 +148,20 @@ class Admin extends Component {
                   console.log({ resp })
                   this.setState({
                     results: resp.data.results.items
-                    // name: resp.data.results.items.alternativeNames[0].name
                   })
                 })
             }
+            // () => {
+            //   postData = e => {
+            //     event.preventDefault()
+            //     axios.post('https://localhost:5001/api/Bars/bar').then(resp => {
+            //       console.log('thangs')
+            //       // this.setState({
+
+            //       // })
+            //     })
+            //   }
+            // }
           )
         } else {
           this.setState({
@@ -188,10 +198,6 @@ class Admin extends Component {
         </div>
       )
     }
-    // postData = event => {
-    //   event.preventDefault()
-    //   axios.post('/api/questions')
-    // }
   }
 
   render() {
