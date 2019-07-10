@@ -58,7 +58,6 @@ export class NavMenu extends Component {
                     Home
                   </NavLink>
                 </NavItem>
-
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/NewDate">
                     New Date
