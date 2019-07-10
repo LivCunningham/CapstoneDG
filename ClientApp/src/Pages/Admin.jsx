@@ -4,11 +4,12 @@ import AddressInput from '../components/AddressInput.jsx'
 import axios from 'axios'
 import './Admin.css'
 
+// const thePlace = 'going-out'
 const APP_ID_HERE = 'AMsXJCY7VtRdqUqhD4Nr'
 const APP_CODE_HERE = 'bAfnOReqDXdAlzKbbz6mCA'
-const API_URL = 'https://places.cit.api.here.com/places/v1/discover/search?q='going-out'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
-  this.state.coords.lat
-},${this.state.coords.lon}'
+// const API_URL = https://places.cit.api.here.com/places/v1/discover/search?q=${thePlace}&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
+//   this.state.coords.lat
+// },${this.state.coords.lon}
 
 class Admin extends Component {
   constructor(props) {
@@ -187,16 +188,16 @@ class Admin extends Component {
         </div>
       )
     }
-    postData = event => {
-      event.preventDefault()
-      axios.post('/api/questions', )
-    }
+    // postData = event => {
+    //   event.preventDefault()
+    //   axios.post('/api/questions')
+    // }
   }
 
   render() {
     let outcome = this.alert()
     return (
-      <div className="container">
+      <div className="stuff-container">
         <AddressSuggest query={this.state.query} onChange={this.onQuery} />
         <AddressInput
           city={this.state.address.city}

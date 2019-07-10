@@ -9,15 +9,11 @@
   padding-right: 4rem;
 }
 
-form {
-  margin-left: 11rem;
-}
-
 ::-webkit-input-placeholder {
   text-align: center;
 }
 
-.container {
+.stuff-container {
   width: 100%;
 }
 
@@ -44,7 +40,7 @@ form {
   text-align: center;
 }
 
-li {
+.results > li {
   color: white;
   text-align: center;
 }

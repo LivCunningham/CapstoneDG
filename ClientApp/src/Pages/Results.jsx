@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import './Results.css'
 
 export default function Results() {
   const [bars, setBars] = useState([])
@@ -43,7 +44,7 @@ export default function Results() {
               <li key={index}>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
-                <div class="container">
+                <div class="things-container">
                   <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
                     <div class="text">See More Photos</div>
@@ -61,7 +62,7 @@ export default function Results() {
               <li key={index}>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
-                <div class="container">
+                <div class="things-container">
                   <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
                     <div class="text">See More Photos</div>
@@ -79,7 +80,7 @@ export default function Results() {
               <li key={index}>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
-                <div class="container">
+                <div class="things-container">
                   <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
                     <div class="text">See More Photos</div>
