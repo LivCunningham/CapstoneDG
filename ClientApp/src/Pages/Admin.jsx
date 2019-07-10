@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import AddressSuggest from '../components/AddressSuggest.jsx'
 import AddressInput from '../components/AddressInput.jsx'
 import axios from 'axios'
+import './Admin.css'
 
 const APP_ID_HERE = 'AMsXJCY7VtRdqUqhD4Nr'
 const APP_CODE_HERE = 'bAfnOReqDXdAlzKbbz6mCA'
+const API_URL = 'https://places.cit.api.here.com/places/v1/discover/search?q='going-out'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
+  this.state.coords.lat
+},${this.state.coords.lon}'
 
 class Admin extends Component {
   constructor(props) {
     super(props)
 
     this.state = this.getInitialState()
-    // this.state = this.getPlaces()
 
     // Admin has entered something in the address bar
     this.onQuery = this.onQuery.bind(this)
@@ -60,6 +63,7 @@ class Admin extends Component {
   getInitialState() {
     return {
       results: [],
+      name: '',
       address: {
         street: '',
         city: '',
@@ -71,20 +75,6 @@ class Admin extends Component {
       locationId: '',
       isChecked: false,
       coords: {}
-    }
-  }
-
-  getPlaces() {
-    return {
-      results: {
-        title: '',
-        averageRating: '',
-        tags: '',
-        openingHours: '',
-        isOpen: false,
-        category: '',
-        coords: {}
-      }
     }
   }
 
@@ -148,7 +138,7 @@ class Admin extends Component {
             () => {
               axios
                 .get(
-                  `https://places.cit.api.here.com/places/v1/discover/search?q=restaurant&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
+                  `https://places.cit.api.here.com/places/v1/discover/search?q='going-out'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
                     this.state.coords.lat
                   },${this.state.coords.lon}`
                 )
@@ -157,6 +147,7 @@ class Admin extends Component {
                   console.log({ resp })
                   this.setState({
                     results: resp.data.results.items
+                    // name: resp.data.results.items.alternativeNames[0].name
                   })
                 })
             }
@@ -196,6 +187,10 @@ class Admin extends Component {
         </div>
       )
     }
+    postData = event => {
+      event.preventDefault()
+      axios.post('/api/questions', )
+    }
   }
 
   render() {
@@ -226,16 +221,20 @@ class Admin extends Component {
         >
           Clear
         </button>
-        <ul className="answer-list">
-          {this.state.results.map(index => {
-            return (
-              <li key={index}>
-                <p>{index.items}</p>
-              </li>
-            )
-          })}
-          ``
-        </ul>
+        <section className="grid">
+          <ul className="results">
+            {this.state.results.map(index => {
+              console.log(index)
+              return (
+                <li key={index.id}>
+                  <button className="yes-way">+</button>
+                  <p>{index.title}</p>
+                  <span>{index.category.id}</span>
+                </li>
+              )
+            })}
+          </ul>
+        </section>
       </div>
     )
   }
