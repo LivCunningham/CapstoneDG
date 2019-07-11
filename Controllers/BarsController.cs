@@ -39,7 +39,12 @@ namespace capstonedg.Controllers
     {
       var bar = new Bars
       {
-        Name = data.Name
+        Name = data.Name,
+        Location = data.Address,
+        Type = data.Type,
+        isOpen = "",
+        Time = "",
+        Photo = data.Photo
       };
       db.Bar.Add(bar);
       db.SaveChanges();

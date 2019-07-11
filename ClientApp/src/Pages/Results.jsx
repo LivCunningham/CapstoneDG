@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Results.css'
-
 export default function Results() {
   const [bars, setBars] = useState([])
   const [restaurants, setRestaurants] = useState([])

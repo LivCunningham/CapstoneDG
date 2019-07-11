@@ -3,6 +3,7 @@ import AddressSuggest from '../components/AddressSuggest.jsx'
 import AddressInput from '../components/AddressInput.jsx'
 import axios from 'axios'
 import './Admin.css'
+import auth from '../components/auth'
 
 // const thePlace = 'going-out'
 const APP_ID_HERE = 'AMsXJCY7VtRdqUqhD4Nr'
@@ -26,6 +27,14 @@ class Admin extends Component {
     // Admin has clicked the clear button
     this.onClear = this.onClear.bind(this)
   }
+
+  // componentWillMount() {
+  //   if (auth.isAuthenticated()) {
+  //     axios.defaults.headers.common = {
+  //       Authorization: auth.authorizationHeader()
+  //     }
+  //   }
+  // }
 
   onQuery(evt) {
     const query = evt.target.value
@@ -195,7 +204,11 @@ class Admin extends Component {
     axios
       .post('https://localhost:5001/api/Bars', {
         name: location.title,
-        address: location.vicinity
+        address: location.vicinity,
+        Type: location.category.id,
+        isOpen: location.openingHours.isOpen,
+        Time: location.openingHours.text,
+        Photo: location.photo
       })
       .then(resp => {
         console.log({ resp })
@@ -246,7 +259,7 @@ class Admin extends Component {
                   </button>
                   <p>{location.title}</p>
                   <span>{location.category.id}</span>
-                  <span>{location.vicinity.split('<br/>')}</span>
+                  <p>{location.vicinity.split('<br/>')}</p>
                 </li>
               )
             })}

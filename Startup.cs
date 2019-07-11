@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -30,6 +32,17 @@ namespace capstonedg
        .AddJsonOptions(options =>
       {
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+      });
+
+      services.AddAuthentication(options =>
+      {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+      }).AddJwtBearer(options =>
+      {
+        options.Authority = "Https://dev-wdl64cw9.auth0.com";
+        options.Audience = "407RNbA71a7eoZwooZNKnJPK5b23aemh";
       });
 
       services.AddDbContext<DatabaseContext>();
@@ -62,6 +75,7 @@ namespace capstonedg
       }
       app.UseHealthChecks("/health");
       app.UseHttpsRedirection();
+      app.UseAuthentication();
       app.UseSwagger();
 
       // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
