@@ -64,6 +64,7 @@ class Admin extends Component {
   getInitialState() {
     return {
       results: [],
+      vicinity: '',
       name: '',
       address: {
         street: '',
@@ -151,17 +152,6 @@ class Admin extends Component {
                   })
                 })
             }
-            // () => {
-            //   postData = e => {
-            //     event.preventDefault()
-            //     axios.post('https://localhost:5001/api/Bars/bar').then(resp => {
-            //       console.log('thangs')
-            //       // this.setState({
-
-            //       // })
-            //     })
-            //   }
-            // }
           )
         } else {
           this.setState({
@@ -200,6 +190,18 @@ class Admin extends Component {
     }
   }
 
+  postData = location => {
+    // e.preventDefault()
+    axios
+      .post('https://localhost:5001/api/Bars', {
+        name: location.title,
+        address: location.vicinity
+      })
+      .then(resp => {
+        console.log({ resp })
+      })
+  }
+
   render() {
     let outcome = this.alert()
     return (
@@ -230,13 +232,21 @@ class Admin extends Component {
         </button>
         <section className="grid">
           <ul className="results">
-            {this.state.results.map(index => {
-              console.log(index)
+            {this.state.results.map(location => {
+              console.log(location)
               return (
-                <li key={index.id}>
-                  <button className="yes-way">+</button>
-                  <p>{index.title}</p>
-                  <span>{index.category.id}</span>
+                <li key={location.id}>
+                  <button
+                    onChange={() => {
+                      this.postData(location)
+                    }}
+                    className="yes-way"
+                  >
+                    +
+                  </button>
+                  <p>{location.title}</p>
+                  <span>{location.category.id}</span>
+                  <span>{location.vicinity.split('<br/>')}</span>
                 </li>
               )
             })}

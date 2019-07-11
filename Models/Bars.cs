@@ -1,5 +1,6 @@
 using System;
 
+
 namespace capstonedg.models
 {
   public class Bars

@@ -4,6 +4,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using capstonedg.models;
+using capstonedg.viewmodels;
+
 
 namespace capstonedg.Controllers
 {
@@ -33,11 +35,15 @@ namespace capstonedg.Controllers
     }
 
     [HttpPost]
-    public ActionResult<List<Bars>> postBars(Bars bar)
+    public ActionResult<List<Bars>> postBars(DataViewModel data)
     {
-      var bars = db.Bar.Add(bar);
+      var bar = new Bars
+      {
+        Name = data.Name
+      };
+      db.Bar.Add(bar);
       db.SaveChanges();
-      return Ok();
+      return Ok(bar);
     }
 
     // PUT
