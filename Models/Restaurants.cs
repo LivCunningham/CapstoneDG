@@ -11,6 +11,9 @@ namespace capstonedg.models
     public string Location { get; set; }
 
     public string Type { get; set; }
+    public bool isOpen { get; set; }
+    public string Time { get; set; }
+
 
     public string Photo { get; set; }
   }

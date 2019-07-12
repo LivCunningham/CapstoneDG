@@ -1,0 +1,203 @@
+.panel {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  a {
+    position: relative;
+    display: block;
+    padding: 12px 25px 25px 25px;
+    color: #fff;
+    text-decoration: none;
+    z-index: 2;
+    span {
+      display: block;
+      font-size: 96px;
+      font-weight: 700;
+      line-height: 96px;
+    }
+  }
+  &:after {
+    position: absolute;
+    font-family: FontAwesome;
+    color: rgba(0, 0, 0, 1);
+    z-index: 1;
+    transition: all 0.5s;
+    // Use this to prevent misplacing background caused by default line-height
+    line-height: normal;
+  }
+  &.post {
+    background-color: #37d2f8;
+    &:after {
+      content: '\f08d';
+      font-size: 200px;
+      color: darken(#37d2f8, 10%);
+      top: 45px;
+      right: 60px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    &:hover:after {
+      top: 8px;
+    }
+  }
+  &.comment {
+    background-color: #e71acc;
+    &:after {
+      content: '\f075';
+      font-size: 180px;
+      color: darken(#e71acc, 4%);
+      top: 30px;
+      right: 35px;
+    }
+    &:hover:after {
+      top: -5px;
+    }
+  }
+  &.page {
+    background-color: #37d2f8;
+    &:after {
+      content: '\f15c';
+      font-size: 160px;
+      color: darken(#37d2f8, 10%);
+      top: 62px;
+      right: 39px;
+    }
+    &:hover:after {
+      top: 24px;
+    }
+  }
+  &.user {
+    background-color: #e71acc;
+    &:after {
+      content: '\f007';
+      font-size: 200px;
+      color: darken(#e71acc, 6%);
+      top: 45px;
+      right: 35px;
+    }
+    &:hover:after {
+      top: 7px;
+    }
+  }
+  &:hover:after {
+    transition: all 0.5s;
+  }
+}
+
+.dash-container {
+  display: flex;
+  flex-direction: row;
+}
+
+div.container {
+  width: 100%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+[class*='entypo-']:before {
+  font-family: 'entypo', sans-serif;
+}
+
+.title-pen {
+  color: #333;
+  font-family: 'Coda', sans-serif;
+  text-align: center;
+  margin-top: 5rem;
+}
+.title-pen span {
+  color: #55acee;
+}
+
+.user-profile {
+  margin: auto;
+  width: 45em;
+  height: 26em;
+  background: #fff;
+  border-radius: 0.3em;
+  margin-bottom: 8rem;
+  margin-top: 5rem;
+  display: inline-block;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.user-profile .username {
+  margin: auto;
+  margin-top: -9rem;
+  margin-left: 5.8em;
+  color: #658585;
+  font-size: 3em;
+  font-family: 'Coda', sans-serif;
+  font-weight: bold;
+}
+.user-profile .bio {
+  margin: auto;
+  display: inline-block;
+  margin-left: 10.43em;
+  color: #e76043;
+  font-size: 1.7em;
+  font-family: 'varela round', sans-serif;
+}
+.user-profile > .description {
+  margin: auto;
+  margin-top: 1.35em;
+  margin-right: 7em;
+  width: 14em;
+  color: #c0c5c5;
+  font-size: 1.3em;
+  font-family: 'varela round', sans-serif;
+}
+.user-profile > img.avatar {
+  padding: 0.5em;
+  margin-left: 3em;
+  margin-top: 3em;
+  height: 10em;
+  width: 10em;
+  border-radius: 18em;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 2.5px solid #eee;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile ul.data {
+  margin: 3.8em auto;
+  height: 3.7em;
+  background: #4eb6b6;
+  text-align: center;
+  border-radius: 0 0 0.3em 0.3em;
+}
+
+.user-profile li {
+  padding: 1.3em;
+  width: 33.33334%;
+  display: table-cell;
+  text-align: center;
+}
+
+.user-profile span {
+  font-family: 'varela round', sans-serif;
+  color: #e3eeee;
+  white-space: nowrap;
+  font-size: 1.27em;
+  font-weight: bold;
+}
+.user-profile span:hover {
+  color: #daebea;
+}
+
+.welcome-back {
+  display: flex;
+  align-content: center;
+}

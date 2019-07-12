@@ -3,7 +3,7 @@ import AddressSuggest from '../components/AddressSuggest.jsx'
 import AddressInput from '../components/AddressInput.jsx'
 import axios from 'axios'
 import './Admin.css'
-import auth from '../components/auth'
+// import auth from '../components/auth'
 
 // const thePlace = 'going-out'
 const APP_ID_HERE = 'AMsXJCY7VtRdqUqhD4Nr'
@@ -74,6 +74,7 @@ class Admin extends Component {
     return {
       results: [],
       vicinity: '',
+
       name: '',
       address: {
         street: '',
@@ -149,7 +150,7 @@ class Admin extends Component {
             () => {
               axios
                 .get(
-                  `https://places.cit.api.here.com/places/v1/discover/search?q='going-out'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
+                  `https://places.cit.api.here.com/places/v1/discover/search?q='eat-drink'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
                     this.state.coords.lat
                   },${this.state.coords.lon}`
                 )
@@ -200,9 +201,25 @@ class Admin extends Component {
   }
 
   postData = location => {
-    // e.preventDefault()
     axios
       .post('https://localhost:5001/api/Bars', {
+        name: location.title,
+        address: location.vicinity,
+        Type: location.title,
+        isOpen: location.isOpen,
+        Time: location.text,
+        Photo: location.photo
+      })
+      .then(resp => {
+        console.log({ resp })
+        this.setState({})
+      })
+  }
+
+  //Bars
+  getData = location => {
+    axios
+      .get('https://localhost:5001/api/Bars', {
         name: location.title,
         address: location.vicinity,
         Type: location.category.id,
@@ -213,6 +230,29 @@ class Admin extends Component {
       .then(resp => {
         console.log({ resp })
       })
+  }
+
+  // //Restaurants
+  // getRestaurants = location => {
+  //   axios
+  //     .get('https://localhost:5001/api/Restaurants', {
+  //       name: location.title,
+  //       address: location.vicinity,
+  //       Type: location.category.id,
+  //       isOpen: location.openingHours.isOpen,
+  //       Time: location.openingHours.text,
+  //       Photo: location.photo
+  //     })
+  //     .then(resp => {
+  //       console.log({ resp })
+  //     })
+  // }
+
+  deleteData = () => {
+    axios.delete('https://localhost:5001/api/Bars/deleteall').then(resp => {
+      console.log({ resp })
+      this.setState({})
+    })
   }
 
   render() {
@@ -243,6 +283,9 @@ class Admin extends Component {
         >
           Clear
         </button>
+        <button className="btn btn-outline-secondary" onClick={this.deleteData}>
+          Delete Shitttt
+        </button>
         <section className="grid">
           <ul className="results">
             {this.state.results.map(location => {
@@ -250,7 +293,7 @@ class Admin extends Component {
               return (
                 <li key={location.id}>
                   <button
-                    onChange={() => {
+                    onClick={() => {
                       this.postData(location)
                     }}
                     className="yes-way"

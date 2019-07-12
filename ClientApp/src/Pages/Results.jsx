@@ -41,6 +41,7 @@ export default function Results() {
           {bars.map(index => {
             return (
               <li key={index}>
+                <button className="yes-way">+</button>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
                 <div class="things-container">
@@ -59,6 +60,7 @@ export default function Results() {
           {restaurants.map(index => {
             return (
               <li key={index}>
+                <button className="yes-way">+</button>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
                 <div class="things-container">
@@ -77,6 +79,7 @@ export default function Results() {
           {entertainment.map(index => {
             return (
               <li key={index}>
+                <button className="yes-way">+</button>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
                 <div class="things-container">

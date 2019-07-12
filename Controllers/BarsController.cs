@@ -18,9 +18,27 @@ namespace capstonedg.Controllers
     {
       this.db = new DatabaseContext();
     }
-    //Beginning section by getting list of all bars
-    //next add filtering logic to select one random bar
 
+
+    [HttpGet]
+    public ActionResult<List<Bars>> getData()
+    {
+      var bars = db.Bar;
+      return bars.ToList();
+    }
+
+
+    [HttpDelete("deleteall")]
+    public ActionResult<List<Bars>> DeleteAll()
+    {
+      var all = db.Bar.ToList();
+      db.RemoveRange(all);
+      db.SaveChanges();
+      return Ok();
+    }
+
+
+    //random
     [HttpGet("{placeType}")]
     public ActionResult<List<Bars>> getBars(string placeType)
     {
@@ -42,8 +60,8 @@ namespace capstonedg.Controllers
         Name = data.Name,
         Location = data.Address,
         Type = data.Type,
-        isOpen = "",
-        Time = "",
+        isOpen = data.isOpen,
+        Time = data.Time,
         Photo = data.Photo
       };
       db.Bar.Add(bar);

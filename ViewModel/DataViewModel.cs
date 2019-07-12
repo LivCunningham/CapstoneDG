@@ -8,5 +8,6 @@ namespace capstonedg.viewmodels
     public bool isOpen { get; set; } = true;
     public string Time { get; set; }
     public string Photo { get; set; }
+    public string tags { get; set; }
   }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using capstonedg.models;
+using capstonedg.viewmodels;
 
 namespace capstonedg.Controllers
 {
@@ -17,7 +18,25 @@ namespace capstonedg.Controllers
       this.db = new DatabaseContext();
     }
 
+    // [HttpGet]
+    // public ActionResult<List<Restaurants>> getRestaurants()
+    // {
+    //   var restaurants = db.Restaurant;
+    //   return restaurants.ToList();
+    // }
 
+    // //delete
+    // [HttpDelete("deleteallR")]
+    // public ActionResult<List<Restaurants>> DeleteAll()
+    // {
+    //   var allR = db.Restaurant.ToList();
+    //   db.RemoveRange(allR);
+    //   db.SaveChanges();
+    //   return Ok();
+    // }
+
+
+    //random
     [HttpGet("{placeType}")]
     public ActionResult<List<Restaurants>> getRestaurants(string placeType)
     {
