@@ -205,7 +205,7 @@ class Admin extends Component {
       .post('https://localhost:5001/api/Bars', {
         name: location.title,
         address: location.vicinity,
-        Type: location.title,
+        Type: location.category.id,
         isOpen: location.isOpen,
         Time: location.text,
         Photo: location.photo

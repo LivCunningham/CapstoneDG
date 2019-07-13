@@ -20,20 +20,7 @@ class Home extends Component {
               <br />
               What's on the agenda for today?
             </div>
-            <ul className="date-time" class="data">
-              <li>
-                <span class="entypo-heart"> FRIDAY</span>
-              </li>
-              <li>
-                <span class="entypo-heart"> JULY</span>
-              </li>
-              <li>
-                <span class="entypo-eye"> 12TH</span>
-              </li>
-              <li>
-                <span class="entypo-user"> 2019</span>
-              </li>
-            </ul>
+            <ul className="date-time" class="data" />
           </div>
         </div>
 
