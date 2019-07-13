@@ -27,7 +27,7 @@ namespace capstonedg.Controllers
       return bars.ToList();
     }
 
-
+    //delete
     [HttpDelete("deleteall")]
     public ActionResult<List<Bars>> DeleteAll()
     {
@@ -36,6 +36,36 @@ namespace capstonedg.Controllers
       db.SaveChanges();
       return Ok();
     }
+
+
+    // {
+    //     Name = data.Name,
+    //     Location = data.Address,
+    //     Type = data.Type,
+    //     isOpen = data.isOpen,
+    //     Time = data.Time,
+    //     Photo = data.Photo
+    //   };
+
+
+
+    // PUT
+    [HttpPut("{id}")]
+    public ActionResult<List<Bars>> putBars(int id, Bars data)
+    {
+      var fixIt = db.Bar.FirstOrDefault(f => f.Id == id);
+      fixIt.Name = data.Name;
+      fixIt.Location = data.Address;
+      fixIt.Type = data.Type;
+      fixIt.isOpen = data.isOpen;
+      fixIt.Time = data.Time;
+      fixIt.Photo = data.Photo;
+      db.SaveChanges();
+      return Ok();
+    }
+
+
+
 
 
     //random
@@ -69,16 +99,16 @@ namespace capstonedg.Controllers
       return Ok(bar);
     }
 
-    // PUT
-    [HttpPut("{id}")]
-    public ActionResult<List<Bars>> putBars(int id, Bars bar)
-    {
-      var fixIt = db.Bar.FirstOrDefault(f => f.Id == id);
-      fixIt.Photo = bar.Photo;
-      fixIt.Name = bar.Name;
-      fixIt.Location = bar.Location;
-      db.SaveChanges();
-      return Ok();
-    }
+    // // PUT
+    // [HttpPut("{id}")]
+    // public ActionResult<List<Bars>> putBars(int id, Bars bar)
+    // {
+    //   var fixIt = db.Bar.FirstOrDefault(f => f.Id == id);
+    //   fixIt.Photo = bar.Photo;
+    //   fixIt.Name = bar.Name;
+    //   fixIt.Location = bar.Location;
+    //   db.SaveChanges();
+    //   return Ok();
+    // }
   }
 }
