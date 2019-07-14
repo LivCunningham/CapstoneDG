@@ -199,17 +199,17 @@ class Admin extends Component {
       )
     }
   }
-  sanitizeType = location => {
-    let incorrectBarTypes = ['bar-pub'];
-    let incorrectRestaurantTypes = ['cuisines.burger'];
-    let incorrectGoingOutTypes = ['im not sure'];
+  // sanitizeType = location => {
+  //   let incorrectBarTypes = ['bar-pub'];
+  //   let incorrectRestaurantTypes = ['cuisines.burger'];
+  //   let incorrectGoingOutTypes = ['im not sure'];
 
-    if(location.catego)
-  }
+  //   if(location.catego)
+  // }
+  // postData = location => {
+
+  //   this.sanitizeType(location);
   postData = location => {
-
-    this.sanitizeType(location);
-
     axios
       .post('https://localhost:5001/api/Bars', {
         name: location.title,

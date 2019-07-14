@@ -51,7 +51,7 @@ namespace capstonedg.Controllers
 
     // PUT
     [HttpPut("{id}")]
-    public ActionResult<List<Bars>> putBars(int id, Bars data)
+    public ActionResult<List<Bars>> putBars(int id, DataViewModel data)
     {
       var fixIt = db.Bar.FirstOrDefault(f => f.Id == id);
       fixIt.Name = data.Name;
