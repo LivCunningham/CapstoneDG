@@ -23,7 +23,9 @@ namespace capstonedg.Controllers
     [HttpGet]
     public ActionResult<List<Bars>> getData()
     {
-      var bars = db.Bar;
+      var bars = db.Bar
+      .Where(x => x.Location.Contains("St Petersburg")).ToList()
+      .OrderBy(x => Guid.NewGuid()).Take(1);
       return bars.ToList();
     }
 

@@ -5,7 +5,6 @@ import AddressInput from '../components/AddressInput.jsx'
 import axios from 'axios'
 import './Admin.css'
 import { Link } from 'react-router-dom'
-
 const APP_ID_HERE = 'AMsXJCY7VtRdqUqhD4Nr'
 const APP_CODE_HERE = 'bAfnOReqDXdAlzKbbz6mCA'
 
@@ -34,6 +33,7 @@ class NewDate extends Component {
     }
     //AUTOCOMPLETE
     const self = this
+
     axios
       .get('https://autocomplete.geocoder.api.here.com/6.2/suggest.json', {
         params: {
@@ -206,6 +206,7 @@ class NewDate extends Component {
 
   render() {
     let outcome = this.alert()
+
     return (
       <div className="stuff-container">
         <AddressSuggest query={this.state.query} onChange={this.onQuery} />
@@ -216,6 +217,7 @@ class NewDate extends Component {
           country={this.state.address.country}
           onChange={this.onAddressChange}
         />
+
         <br />
         {outcome}
         <button

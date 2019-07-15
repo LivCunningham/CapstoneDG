@@ -74,6 +74,9 @@ class Admin extends Component {
     return {
       results: [],
       vicinity: '',
+      openingHours: '',
+      isOpen: '',
+      text: '',
 
       name: '',
       address: {
@@ -150,7 +153,7 @@ class Admin extends Component {
             () => {
               axios
                 .get(
-                  `https://places.cit.api.here.com/places/v1/discover/search?q='eat-drink'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
+                  `https://places.cit.api.here.com/places/v1/discover/search?q='going-out'&app_id=AMsXJCY7VtRdqUqhD4Nr&app_code=bAfnOReqDXdAlzKbbz6mCA&at=${
                     this.state.coords.lat
                   },${this.state.coords.lon}`
                 )
@@ -199,6 +202,7 @@ class Admin extends Component {
       )
     }
   }
+
   // sanitizeType = location => {
   //   let incorrectBarTypes = ['bar-pub'];
   //   let incorrectRestaurantTypes = ['cuisines.burger'];
@@ -215,13 +219,12 @@ class Admin extends Component {
         name: location.title,
         address: location.vicinity,
         Type: location.category.id,
-        isOpen: location.isOpen,
-        Time: location.text,
+        isOpen: location.openingHours.isOpen,
+        Time: location.openingHours.text,
         Photo: location.photo
       })
       .then(resp => {
         console.log({ resp })
-        this.setState({})
       })
   }
 
@@ -299,6 +302,7 @@ class Admin extends Component {
           <ul className="results">
             {this.state.results.map(location => {
               console.log(location)
+
               return (
                 <li key={location.id}>
                   <button

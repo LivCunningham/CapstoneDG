@@ -24,6 +24,7 @@ export default class App extends Component {
         <Route exact path="/Admin" component={Admin} />
         <Route component={Registration} />
         <Route exact path="/NewDate" component={NewDate} />
+        {/* <Route path="/Results/:city" exact component={Results} /> */}
         <Route exact path="/Results" component={Results} />
         <Route exact path="/TheOne" component={TheOne} />
         <Route exact Path="/Adventures" component={Adventures} />
