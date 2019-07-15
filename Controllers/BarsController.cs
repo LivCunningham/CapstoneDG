@@ -23,11 +23,19 @@ namespace capstonedg.Controllers
     [HttpGet]
     public ActionResult<List<Bars>> getData()
     {
-      var bars = db.Bar
-      .Where(x => x.Location.Contains("St Petersburg")).ToList()
-      .OrderBy(x => Guid.NewGuid()).Take(1);
+      var bars = db.Bar;
+      // .Where(x => x.Location.Contains("St Petersburg")).ToList()
+      // .OrderBy(x => Guid.NewGuid()).Take(1);
       return bars.ToList();
     }
+
+    [HttpGet("individual/{id}")]
+    public ActionResult<Bars> getOneData(int id)
+    {
+      var theBar = db.Bar.FirstOrDefault(item => item.Id == id);
+      return theBar;
+    }
+
 
     //delete
     [HttpDelete("deleteall")]
@@ -40,16 +48,27 @@ namespace capstonedg.Controllers
     }
 
 
-    // {
-    //     Name = data.Name,
-    //     Location = data.Address,
-    //     Type = data.Type,
-    //     isOpen = data.isOpen,
-    //     Time = data.Time,
-    //     Photo = data.Photo
-    //   };
+    // Delete One
+    [HttpDelete("{id}")]
+    public ActionResult<List<Bars>> deleteABar(int id)
+    {
+      var deleteIt = db.Bar.FirstOrDefault(f => f.Id == id);
+      db.Bar.Remove(deleteIt);
+      db.SaveChanges();
+      return Ok();
+    }
 
 
+
+    // PUT
+    [HttpPatch("{id}")]
+    public ActionResult<List<Bars>> patchBars(int id, DataViewModel data)
+    {
+      var editIt = db.Bar.FirstOrDefault(f => f.Id == id);
+      editIt.Photo = data.Photo;
+      db.SaveChanges();
+      return Ok();
+    }
 
     // PUT
     [HttpPut("{id}")]
@@ -65,8 +84,6 @@ namespace capstonedg.Controllers
       db.SaveChanges();
       return Ok();
     }
-
-
 
 
 

@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Results.css'
+import { Link } from 'react-router-dom'
+import {
+  Card,
+  Button,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardDeck,
+  CardSubtitle,
+  CardBody
+} from 'reactstrap'
 
-export default function Results() {
+export default function Results(props) {
+  const selectedCity = props.match.params.city
+  console.log({ selectedCity })
   const [bars, setBars] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [entertainment, setEntertainment] = useState([])
@@ -10,16 +23,14 @@ export default function Results() {
   //Bars
   useEffect(() => {
     axios.get(`https://localhost:5001/api/Bars`).then(resp => {
-      console.log({ resp })
       setBars(resp.data)
+      console.log({ resp })
+
+      // this.setState({
+      //   setID: resp.data.id
+      // })
     })
   }, [])
-
-  // this.setState({
-  //   isOpen: 'true',
-  //   if (!this.state.isOPen) {
-  //     return
-  //   }
 
   //Restaurants
   useEffect(() => {
@@ -42,68 +53,66 @@ export default function Results() {
   }, [])
 
   return (
-    <section>
-      <div className="bar-selection">
+    <CardDeck>
+      <Card>
         <ul className="Bars">
           {bars.map(index => {
             return (
               <li key={index}>
-                <h4>{index.name}</h4>
-                <h4>{index.location.replace('<br/>', '')}</h4>
-                {/* <div class="container">
-                  <div class="led-box">
-                    <div class="led-green" />
-                  </div>
-                </div> */}
-                <div class="things-container">
-                  <img className="image" src={index.photo} alt="" />
-                  <div class="middle">
-                    <div class="text">See More Photos</div>
-                  </div>
-                </div>
-              </li>
-              // split('<br/>')
-            )
-          })}
-        </ul>
-      </div>
-      <div className="restaurant-selection">
-        <ul className="restaurants">
-          {restaurants.map(index => {
-            return (
-              <li key={index}>
-                <h4>{index.name}</h4>
-                <h4>{index.location}</h4>
-                <p id="lit">{index.isOpen}</p>
-                <div class="things-container">
-                  <img className="image" src={index.photo} alt="stuff" />
-                  <div class="middle">
-                    <div class="text">See More Photos</div>
-                  </div>
-                </div>
+                <CardImg
+                  top
+                  width="100%"
+                  src={index.photo}
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <Link to={`/TheOne/${index.id}`}>
+                    <CardTitle>{index.name}</CardTitle>
+                  </Link>
+                  <CardSubtitle>{index.type}</CardSubtitle>
+                  <CardText>{index.location.replace('<br/>', '')}</CardText>
+                  <Button>Let's Go!</Button>
+                </CardBody>
               </li>
             )
           })}
         </ul>
-      </div>
-      <div className="entertainment-selection">
-        <ul className="entertainment">
-          {entertainment.map(index => {
-            return (
-              <li key={index}>
-                <h4>{index.name}</h4>
-                <h4>{index.location}</h4>
-                <div class="things-container">
-                  <img className="image" src={index.photo} alt="stuff" />
-                  <div class="middle">
-                    <div class="text">See More Photos</div>
-                  </div>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    </section>
+      </Card>
+      <Card>
+        <CardImg
+          top
+          width="100%"
+          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
+          alt="Card image cap"
+        />
+        <CardBody>
+          <CardTitle>Card title</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>
+            This card has supporting text below as a natural lead-in to
+            additional content.
+          </CardText>
+          <Button>Let's Go!</Button>
+        </CardBody>
+      </Card>
+      <Card>
+        <CardImg
+          top
+          width="100%"
+          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
+          alt="Card image cap"
+        />
+        <CardBody>
+          <CardTitle>Card title</CardTitle>
+          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardText>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </CardText>
+          <Button>Let's Go!</Button>
+        </CardBody>
+      </Card>
+    </CardDeck>
   )
 }

@@ -73,15 +73,6 @@ export class NavMenu extends Component {
                     Adventures
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink
-                    tag={Link}
-                    className="text-dark"
-                    to="/FavoritePlaces"
-                  >
-                    Favorite Dates
-                  </NavLink>
-                </NavItem>
               </ul>
             </Collapse>
           </Container>

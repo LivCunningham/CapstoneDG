@@ -3,7 +3,6 @@ import './NewDate.scss'
 import AddressSuggest from '../components/AddressSuggest.jsx'
 import AddressInput from '../components/AddressInput.jsx'
 import axios from 'axios'
-import './Admin.css'
 import { Link } from 'react-router-dom'
 const APP_ID_HERE = 'AMsXJCY7VtRdqUqhD4Nr'
 const APP_CODE_HERE = 'bAfnOReqDXdAlzKbbz6mCA'
@@ -208,43 +207,44 @@ class NewDate extends Component {
     let outcome = this.alert()
 
     return (
-      <div className="stuff-container">
-        <AddressSuggest query={this.state.query} onChange={this.onQuery} />
-        <AddressInput
-          city={this.state.address.city}
-          state={this.state.address.state}
-          postalCode={this.state.address.postalCode}
-          country={this.state.address.country}
-          onChange={this.onAddressChange}
-        />
+      <div>
+        <div className="stuff-container">
+          <AddressSuggest query={this.state.query} onChange={this.onQuery} />
+          <AddressInput
+            city={this.state.address.city}
+            state={this.state.address.state}
+            postalCode={this.state.address.postalCode}
+            country={this.state.address.country}
+            onChange={this.onAddressChange}
+          />
 
-        <br />
-        {outcome}
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={this.onCheck}
-        >
-          Check
-        </button>
-        <button
-          type="submit"
-          className="btn btn-outline-secondary"
-          onClick={this.onClear}
-        >
-          Clear
-        </button>
-
-        <Link className="link-results" to="/Results">
-          <button className="Random-Button" class="btn draw-border">
-            TOTALLY RANDOM ADVENTURE
+          <br />
+          {outcome}
+        </div>
+        <section className="operations">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={this.onCheck}
+          >
+            Check
           </button>
-        </Link>
-        <Link className="link-results" to="/Results">
-          <button className="Your-Button" class="btn draw-border">
-            YOUR OWN ADVENTURE
+          <button
+            type="submit"
+            className="btn btn-outline-secondary"
+            onClick={this.onClear}
+          >
+            Clear
           </button>
-        </Link>
+          <Link
+            className="link-results"
+            to={`/Results/${this.state.address.city}`}
+          >
+            <button className="Random-Button" class="btn draw-border">
+              Pick Your Adventure
+            </button>
+          </Link>
+        </section>
       </div>
     )
   }
