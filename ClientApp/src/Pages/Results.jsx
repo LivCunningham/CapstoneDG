@@ -15,6 +15,12 @@ export default function Results() {
     })
   }, [])
 
+  // this.setState({
+  //   isOpen: 'true',
+  //   if (!this.state.isOPen) {
+  //     return
+  //   }
+
   //Restaurants
   useEffect(() => {
     axios
@@ -44,6 +50,11 @@ export default function Results() {
               <li key={index}>
                 <h4>{index.name}</h4>
                 <h4>{index.location.replace('<br/>', '')}</h4>
+                {/* <div class="container">
+                  <div class="led-box">
+                    <div class="led-green" />
+                  </div>
+                </div> */}
                 <div class="things-container">
                   <img className="image" src={index.photo} alt="" />
                   <div class="middle">
@@ -63,6 +74,7 @@ export default function Results() {
               <li key={index}>
                 <h4>{index.name}</h4>
                 <h4>{index.location}</h4>
+                <p id="lit">{index.isOpen}</p>
                 <div class="things-container">
                   <img className="image" src={index.photo} alt="stuff" />
                   <div class="middle">
