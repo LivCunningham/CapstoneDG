@@ -20,6 +20,25 @@ namespace capstonedg.Controllers
     }
 
 
+    [HttpGet("visited")]
+    public ActionResult<List<Bars>> Get()
+    {
+      var bars = db.Bar
+      .Where(w => w.Visited == true);
+      return bars.ToList();
+    }
+
+    // PUT
+    [HttpPatch("Visited/{id}")]
+    public ActionResult<List<Bars>> patchVisited(int id)
+    {
+      var edit = db.Bar.FirstOrDefault(f => f.Id == id);
+      edit.Visited = true;
+      db.SaveChanges();
+      return Ok();
+    }
+
+
     [HttpGet]
     public ActionResult<List<Bars>> getData()
     {

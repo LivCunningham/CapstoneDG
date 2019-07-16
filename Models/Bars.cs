@@ -14,8 +14,7 @@ namespace capstonedg.models
     public string Type { get; set; }
     public bool? isOpen { get; set; }
     public string Time { get; set; }
-
-
+    public bool Visited { get; set; } = false;
     public string Photo { get; set; }
   }
 }
