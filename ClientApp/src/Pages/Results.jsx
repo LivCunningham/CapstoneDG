@@ -71,7 +71,9 @@ export default function Results(props) {
                   </Link>
                   <CardSubtitle>{index.type}</CardSubtitle>
                   <CardText>{index.location.replace('<br/>', '')}</CardText>
-                  <Button>Let's Go!</Button>
+                  <Link to={`/TheOne/${index.id}`}>
+                    <Button>Let's Go!</Button>{' '}
+                  </Link>
                 </CardBody>
               </li>
             )
@@ -79,39 +81,56 @@ export default function Results(props) {
         </ul>
       </Card>
       <Card>
-        <CardImg
-          top
-          width="100%"
-          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
-          alt="Card image cap"
-        />
-        <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>
-            This card has supporting text below as a natural lead-in to
-            additional content.
-          </CardText>
-          <Button>Let's Go!</Button>
-        </CardBody>
+        <ul className="Bars">
+          {bars.map(index => {
+            return (
+              <li key={index}>
+                <CardImg
+                  top
+                  width="100%"
+                  src={index.photo}
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <Link to={`/TheOne/${index.id}`}>
+                    <CardTitle>{index.name}</CardTitle>
+                  </Link>
+                  <CardSubtitle>{index.type}</CardSubtitle>
+                  <CardText>{index.location.replace('<br/>', '')}</CardText>
+                  <Link to={`/TheOne/${index.id}`}>
+                    <Button>Let's Go!</Button>{' '}
+                  </Link>
+                </CardBody>
+              </li>
+            )
+          })}
+        </ul>
       </Card>
       <Card>
-        <CardImg
-          top
-          width="100%"
-          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=256%C3%97180&w=256&h=180"
-          alt="Card image cap"
-        />
-        <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </CardText>
-          <Button>Let's Go!</Button>
-        </CardBody>
+        <ul className="Bars">
+          {bars.map(index => {
+            return (
+              <li key={index}>
+                <CardImg
+                  top
+                  width="100%"
+                  src={index.photo}
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <Link to={`/TheOne/${index.id}`}>
+                    <CardTitle>{index.name}</CardTitle>
+                  </Link>
+                  <CardSubtitle>{index.type}</CardSubtitle>
+                  <CardText>{index.location.replace('<br/>', '')}</CardText>
+                  <Link to={`/TheOne/${index.id}`}>
+                    <Button>Let's Go!</Button>{' '}
+                  </Link>
+                </CardBody>
+              </li>
+            )
+          })}
+        </ul>
       </Card>
     </CardDeck>
   )

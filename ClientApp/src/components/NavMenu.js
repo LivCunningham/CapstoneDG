@@ -10,7 +10,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './NavMenu.css'
-import logo from '../Images/Capture2.JPG'
+import logo from '../Images/placeholder.jpg'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -18,15 +18,14 @@ export class NavMenu extends Component {
   constructor(props) {
     super(props)
 
-    this.toggleNavbar = this.toggleNavbar.bind(this)
+    this.toggle = this.toggle.bind(this)
     this.state = {
-      collapsed: true
+      isOpen: false
     }
   }
-
-  toggleNavbar() {
+  toggle() {
     this.setState({
-      collapsed: !this.state.collapsed
+      isOpen: !this.state.isOpen
     })
   }
 
@@ -48,11 +47,11 @@ export class NavMenu extends Component {
               navbar
             >
               <ul className="navbar-nav flex-grow">
-                <NavItem>
+                {/* <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/Login">
                     Login
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/Admin">
                     Admin
@@ -63,14 +62,14 @@ export class NavMenu extends Component {
                     Home
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/NewDate">
                     New Date
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/Adventures">
-                    Adventures
+                  <NavLink tag={Link} className="text-dark" to="/Visited">
+                    Visited
                   </NavLink>
                 </NavItem>
               </ul>

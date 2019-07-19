@@ -7,7 +7,7 @@ import Login from './Pages/Login.jsx'
 import Registration from './Pages/Registration.jsx'
 import Results from './Pages/Results.jsx'
 import TheOne from './Pages/TheOne.jsx'
-import Adventures from './Pages/Adventures.jsx'
+import Visited from './Pages/Visited.jsx'
 import Admin from './Pages/Admin.jsx'
 import auth from './components/auth'
 import axios from 'axios'
@@ -26,7 +26,7 @@ export default class App extends Component {
         {/* <Route path="/Results/:city" exact component={Results} /> */}
         <Route exact path="/Results/:city" component={Results} />
         <Route exact path="/TheOne/:id" component={TheOne} />
-        <Route exact Path="/Adventures" component={Adventures} />
+        <Route exact path="/Visited" component={Visited} />
         <Route path="/login" render={() => auth.login()} />
         <Route
           path="/logout"

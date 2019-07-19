@@ -1,11 +1,4 @@
-body {
-  background: url(../Images/background.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
+/* 
 .bar-selection h3 {
   text-align: center;
   position: relative;
@@ -160,13 +153,13 @@ body {
 .entertainment {
   list-style: none;
   text-align: center;
-}
+} */
 
 /* .container {
   position: relative;
   width: 50%;
 } */
-
+/* 
 .image {
   opacity: 1;
   display: block;
@@ -199,4 +192,4 @@ body {
   color: white;
   font-size: 16px;
   padding: 16px 32px;
-}
+} */

@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using capstonedg.models;
+using capstonedg.viewmodels;
 
 namespace capstonedg.Controllers
 {
@@ -17,21 +18,30 @@ namespace capstonedg.Controllers
       this.db = new DatabaseContext();
     }
 
-    [HttpGet("{placeType}")]
-    public ActionResult<List<Entertainment>> getFun(string placeType)
-    {
-      var entertainment = db.Fun
-      .Where(x => x.Type == placeType).ToList()
-      .OrderBy(x => Guid.NewGuid()).Take(1);
-      return entertainment.ToList();
-    }
+    // [HttpGet("{placeType}")]
+    // public ActionResult<List<Entertainment>> getFun(string placeType)
+    // {
+    //   var entertainment = db.Fun
+    //   .Where(x => x.Type == placeType).ToList()
+    //   .OrderBy(x => Guid.NewGuid()).Take(1);
+    //   return entertainment.ToList();
+    // }
 
     [HttpPost]
-    public ActionResult<List<Entertainment>> postFun(Entertainment Fun)
+    public ActionResult<List<Entertainment>> postFun(DataViewModel data)
     {
-      var theFun = db.Fun.Add(Fun);
+      var theFun = new Entertainment
+      {
+        Name = data.Name,
+        Location = data.Address,
+        Type = data.Type,
+        isOpen = data.isOpen,
+        Time = data.Time,
+        Photo = data.Photo
+      };
+      db.Fun.Add(theFun);
       db.SaveChanges();
-      return Ok();
+      return Ok(theFun);
     }
 
     // PUT

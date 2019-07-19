@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import BarFeedItem from '../components/BarFeedItem.jsx'
 import './TheOne.scss'
+import { Button } from 'reactstrap'
 
 export default function TheOne(props) {
   const [result, setResults] = useState([])
   const [been, setBeen] = useState([])
 
+  const placeID = props.match.params.id
   useEffect(() => {
-    let placeID = props.match.params.id
     console.log({ placeID })
     axios
       .get(`https://localhost:5001/api/Bars/individual/${placeID}`)
@@ -20,28 +21,33 @@ export default function TheOne(props) {
 
   const updateVisited = () => {
     console.log()
-    axios.patch(`https://localhost:5001/api/Bars/Visited/`).then(resp => {
-      console.log({ resp })
-      setResults(resp.data)
-    })
+    axios
+      .patch(`https://localhost:5001/api/Bars/Visited/${placeID}`)
+      .then(resp => {
+        console.log({ resp })
+        setResults(resp.data)
+      })
   }
 
   return (
     <div>
       <div class="card">
         <div class="card-body">
-          <button
+          <Button
+            color="success"
+            className="been-button"
             type="radio"
             name="stuff"
             value="stuff"
-            className="button"
             onClick={() => updateVisited()}
-          />
-          <h5 class="card-title">{result.name}</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
+          >
+            Have you been here before?
+          </Button>
+          <h1 className="card-one-title">{result.name}</h1>
+          <h3 class="card-title">{result.location}</h3>
+          <h3 class="card-title">{result.type}</h3>
+          <h3 class="card-title">{result.time}</h3>
+
           <p class="card-text">
             <small class="text-muted">Last updated 3 mins ago</small>
           </p>

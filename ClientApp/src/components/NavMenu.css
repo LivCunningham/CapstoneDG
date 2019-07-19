@@ -6,6 +6,7 @@
 
 html {
   font-size: 14px;
+  background-color: #f9f9f9;
 }
 @media (min-width: 768px) {
   html {
@@ -19,5 +20,9 @@ html {
 
 .logo-image {
   width: 118px;
-  height: 69px;
+  height: 100px;
 }
+
+/* nav {
+  border-bottom: solid 0.01rem;
+} */

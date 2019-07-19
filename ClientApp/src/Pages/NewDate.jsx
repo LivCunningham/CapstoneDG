@@ -134,6 +134,9 @@ class NewDate extends Component {
                 lon: location.DisplayPosition.Longitude
               }
             },
+            // () => {
+            //   axios
+            //     .get(`https://geocoder.api.here.com/6.2/geocode.json/`, { params: params })
             () => {
               axios
                 .get(

@@ -2,7 +2,9 @@ using System;
 
 namespace capstonedg.models
 {
+
   public class Restaurants
+
   {
     public int Id { get; set; }
 
@@ -11,10 +13,9 @@ namespace capstonedg.models
     public string Location { get; set; }
 
     public string Type { get; set; }
-    public bool isOpen { get; set; }
+    public bool? isOpen { get; set; }
     public string Time { get; set; }
-
-
+    public bool Visited { get; set; } = false;
     public string Photo { get; set; }
   }
 }

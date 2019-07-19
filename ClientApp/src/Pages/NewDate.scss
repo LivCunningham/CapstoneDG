@@ -1,3 +1,7 @@
+body {
+  height: 110rem;
+}
+
 .categories {
   display: flex;
   flex-direction: row;
@@ -69,7 +73,7 @@
 // }
 
 .stuff-container {
-  margin-top: 5rem;
+  margin-top: 18rem;
   margin-bottom: 2rem;
 }
 
@@ -89,7 +93,7 @@
   color: $color;
   transition: color $duration $duration/3;
   position: relative;
-  margin-left: 9rem;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -163,9 +167,9 @@
 
 .Your-Button {
   margin-top: 2rem;
-  margin-left: 3rem;
 }
 
 .operations {
   display: flex;
+  justify-content: center;
 }

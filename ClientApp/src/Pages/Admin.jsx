@@ -244,21 +244,21 @@ class Admin extends Component {
       })
   }
 
-  // //Restaurants
-  // getRestaurants = location => {
-  //   axios
-  //     .get('https://localhost:5001/api/Restaurants', {
-  //       name: location.title,
-  //       address: location.vicinity,
-  //       Type: location.category.id,
-  //       isOpen: location.openingHours.isOpen,
-  //       Time: location.openingHours.text,
-  //       Photo: location.photo
-  //     })
-  //     .then(resp => {
-  //       console.log({ resp })
-  //     })
-  // }
+  //Restaurants
+  getRestaurants = location => {
+    axios
+      .get('https://localhost:5001/api/Restaurants', {
+        name: location.title,
+        address: location.vicinity,
+        Type: location.category.id,
+        isOpen: location.openingHours.isOpen,
+        Time: location.openingHours.text,
+        Photo: location.photo
+      })
+      .then(resp => {
+        console.log({ resp })
+      })
+  }
 
   deleteData = () => {
     axios.delete('https://localhost:5001/api/Bars/deleteall').then(resp => {
@@ -270,57 +270,67 @@ class Admin extends Component {
   render() {
     let outcome = this.alert()
     return (
-      <div className="stuff-container">
-        <AddressSuggest query={this.state.query} onChange={this.onQuery} />
-        <AddressInput
-          city={this.state.address.city}
-          state={this.state.address.state}
-          postalCode={this.state.address.postalCode}
-          country={this.state.address.country}
-          onChange={this.onAddressChange}
-        />
-        <br />
-        {outcome}
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={this.onCheck}
-        >
-          Check
-        </button>
-        <button
-          type="submit"
-          className="btn btn-outline-secondary"
-          onClick={this.onClear}
-        >
-          Clear
-        </button>
-        <button className="btn btn-outline-secondary" onClick={this.deleteData}>
-          Delete
-        </button>
-        <section className="grid">
-          <ul className="results">
-            {this.state.results.map(location => {
-              console.log(location)
+      <div>
+        <h1>
+          SEARCH FOR NEW CITY RESTAURANTS, BARS, EVENTS, OR NEW VENUES TO ADD TO
+          THE DATABASE
+        </h1>
 
-              return (
-                <li key={location.id}>
-                  <button
-                    onClick={() => {
-                      this.postData(location)
-                    }}
-                    className="yes-way"
-                  >
-                    +
-                  </button>
-                  <p>{location.title}</p>
-                  <span>{location.category.id}</span>
-                  <p>{location.vicinity.split('<br/>')}</p>
-                </li>
-              )
-            })}
-          </ul>
-        </section>
+        <div className="stuff-container">
+          <AddressSuggest query={this.state.query} onChange={this.onQuery} />
+          <AddressInput
+            city={this.state.address.city}
+            state={this.state.address.state}
+            postalCode={this.state.address.postalCode}
+            country={this.state.address.country}
+            onChange={this.onAddressChange}
+          />
+          <br />
+          {outcome}
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={this.onCheck}
+          >
+            Check
+          </button>
+          <button
+            type="submit"
+            className="btn btn-outline-secondary"
+            onClick={this.onClear}
+          >
+            Clear
+          </button>
+          <button
+            className="btn btn-outline-secondary"
+            onClick={this.deleteData}
+          >
+            Delete
+          </button>
+          <section className="grid">
+            <ul className="results">
+              {this.state.results.map(location => {
+                console.log(location)
+
+                return (
+                  <li key={location.id}>
+                    <button
+                      onClick={() => {
+                        this.postData(location)
+                      }}
+                      className="yes-way"
+                    >
+                      +
+                    </button>
+                    <p>{location.title}</p>
+                    <span>{location.category.id}</span>
+                    <p>{location.vicinity.split('<br/>')}</p>
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+        </div>
       </div>
     )
   }

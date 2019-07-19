@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './Home.scss'
+import './Visited.scss'
 import { Link } from 'react-router-dom'
-import NewDate from './NewDate.jsx'
 
-export default function Home(props) {
+export default function Visited(props) {
   const beenThere = props.match.params.visited
   console.log({ beenThere })
+
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -81,28 +81,55 @@ export default function Home(props) {
   }
 
   return (
-    <div>
-      <div className="home">
-        <ul className="homepage-container">
-          <li className="things">
-            <h1>
-              <span className="discover">DISCOVER</span>
-              <span className="new">
-                {' '}
-                NEW PLACES,
-                <br />
-              </span>
-              <span className="venue">
-                EVENTS & VENUES <br />
-              </span>
-              <span className="home">IN YOUR NECK OF THE WOODS</span>
-            </h1>
-            <span />
-          </li>
-          <li className="things" />
-        </ul>
+    <div className="visited">
+      <div class="scroll-container">
+        <div className="this-is-stuff">
+          <h1 className="sideways">Recent Adventures</h1>
+          <div class="wrap-container" id="wrap-scroll">
+            <ul id="ul-scroll" className="Been">
+              {list.map(soup => {
+                return (
+                  <li key={soup}>
+                    <li class="active">
+                      <Link to={`/TheOne/${soup.name}`}>
+                        <span className="beento">{soup.name}</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <span class="item">{soup.name}</span>
+                    </li>
+                    <li>
+                      <span class="item">{soup.name}</span>
+                    </li>
+                    <li>
+                      <span class="item">{soup.name}</span>
+                    </li>
+                    <li>
+                      <span class="item">{soup.name}</span>
+                    </li>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
-      <NewDate />
+      <svg>
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0%" x2="0" y2="50%">
+            <stop stopColor="black" offset="0" />
+            <stop stopColor="white" offset="1" />
+          </linearGradient>
+
+          <mask
+            id="masking"
+            maskUnits="objectBoundingBox"
+            maskContentUnits="objectBoundingBox"
+          >
+            <rect y="0" width="1" height="1" fill="url(#gradient)" />
+          </mask>
+        </defs>
+      </svg>
     </div>
   )
 }
